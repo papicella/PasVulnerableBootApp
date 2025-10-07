@@ -1,0 +1,6 @@
+
+GET http://localhost:8080/api/time?city=Melbourne
+GET http://localhost:8080/api/time?city=New%20York
+
+http://localhost:8080/home/time?city=Melbourne
+

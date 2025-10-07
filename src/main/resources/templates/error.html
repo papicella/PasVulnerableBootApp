@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application Error</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 0; }
+    .container { max-width: 920px; margin: 2rem auto; padding: 1.25rem; }
+    h1 { margin: 0 0 0.5rem; font-size: 1.75rem; }
+    p.lead { margin: 0 0 1rem; color: #666; }
+    .kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 0.75rem; margin: 1rem 0; }
+    .kv .k { font-weight: 600; }
+    details { margin: 1rem 0; border: 1px solid #ccc; border-radius: 6px; padding: 0.5rem 0.75rem; }
+    pre { white-space: pre-wrap; overflow-x: auto; margin: 0.5rem 0 0; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 1.5rem 0; }
+    a.btn { display: inline-block; padding: 0.5rem 0.9rem; border: 1px solid #999; border-radius: 4px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Something went wrong</h1>
+    <p class="lead">The application encountered an error while processing your request.</p>
+
+    <div class="kv">
+      <div class="k">Timestamp</div>
+      <div class="v" th:text="${timestamp}">[timestamp]</div>
+
+      <div class="k">Status</div>
+      <div class="v" th:text="${status}">[status]</div>
+
+      <div class="k">Error</div>
+      <div class="v" th:text="${error}">[error]</div>
+
+      <div class="k">Message</div>
+      <div class="v" th:text="${message}">[message]</div>
+
+      <div class="k">Path</div>
+      <div class="v" th:text="${path}">[path]</div>
+
+      <div class="k" th:if="${requestId != null}">Request ID</div>
+      <div class="v" th:if="${requestId != null}" th:text="${requestId}">[requestId]</div>
+    </div>
+
+    <details th:if="${trace != null}">
+      <summary>Stack trace</summary>
+      <pre th:text="${trace}">[trace]</pre>
+    </details>
+
+    <hr />
+    <p>
+      Tip for troubleshooting during development:
+      enable more verbose error details by setting the following in application.properties:
+    </p>
+    <pre>server.error.include-message=always
+server.error.include-binding-errors=always
+server.error.include-stacktrace=always</pre>
+
+    <p><a href="/" class="btn">Return to home</a></p>
+  </div>
+</body>
+</html>

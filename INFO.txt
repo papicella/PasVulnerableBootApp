@@ -5,3 +5,9 @@ GET http://localhost:8080/api/time?city=New%20York
 http://localhost:8080/home/time?city=Melbourne
 
 twelvedata.apikey=bf2c597a4bcd4e1b9b0e7c39a5851708
+
+Run your Spring Boot app, then:
+
+Vulnerable: http://localhost:8080/vuln/xss?input=<script>alert('xss')</script> → the script will execute.
+Safe: http://localhost:8080/vuln/xss-safe?input=<script>alert('xss')</script> → the script will be shown as text (escaped), not executed.
+

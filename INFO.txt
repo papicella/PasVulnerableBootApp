@@ -11,3 +11,6 @@ Run your Spring Boot app, then:
 Vulnerable: http://localhost:8080/vuln/xss?input=<script>alert('xss')</script> → the script will execute.
 Safe: http://localhost:8080/vuln/xss-safe?input=<script>alert('xss')</script> → the script will be shown as text (escaped), not executed.
 
+docker build -t pasvulnerablebootapp .
+docker run -p 8080:8080 pasvulnerablebootapp
+

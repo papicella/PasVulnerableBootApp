@@ -25,8 +25,8 @@ public class NewVulnControllerPR {
      * This method reflects raw user input into an HTML response without encoding => XSS.
      * Only include this in a safe testing environment.
      */
-    @GetMapping(path = "/vuln/xss")
-    public ResponseEntity<String> vulnerableXss(@RequestParam(name = "input", required = false, defaultValue = "") String input) {
+    @GetMapping(path = "/vuln/xss2")
+    public ResponseEntity<String> vulnerableXss2(@RequestParam(name = "input", required = false, defaultValue = "") String input) {
         String body = "<!doctype html>\n" +
                 "<html>\n" +
                 "  <head><meta charset=\"utf-8\"><title>XSS Demo</title></head>\n" +
@@ -50,8 +50,8 @@ public class NewVulnControllerPR {
      * This demonstrates a secret embedded in source code and returned in an HTTP response.
      * DO NOT commit secrets to source control or return them in responses in real apps.
      */
-    @GetMapping(path = "/vuln/secret")
-    public ResponseEntity<String> vulnerableHardCodedSecret() {
+    @GetMapping(path = "/vuln/secret2")
+    public ResponseEntity<String> vulnerableHardCodedSecret2() {
         // <-- BAD: hard-coded secret in source code (example value only)
         String hardCodedApiKey = "AKIAEXAMPLEHARDCODEDKEY123456";
 
@@ -80,8 +80,8 @@ public class NewVulnControllerPR {
      *
      * DO NOT use this pattern in real applications.
      */
-    @GetMapping(path = "/vuln/command")
-    public ResponseEntity<String> commandInjection(@RequestParam(name = "cmd", required = false, defaultValue = "date") String cmd) throws Exception {
+    @GetMapping(path = "/vuln/command2")
+    public ResponseEntity<String> commandInjection2(@RequestParam(name = "cmd", required = false, defaultValue = "date") String cmd) throws Exception {
         StringBuilder output = new StringBuilder();
         try {
             // <-- HIGH RISK: executing raw user input as a system command

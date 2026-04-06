@@ -1,4 +1,4 @@
-FROM openjdk:17-jre-slim
+FROM eclipse-temurin:17-jdk-jammy
 
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser
 
@@ -10,3 +10,5 @@ USER appuser
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+# todo://

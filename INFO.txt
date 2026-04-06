@@ -14,3 +14,13 @@ Safe: http://localhost:8080/vuln/xss-safe?input=<script>alert('xss')</script> â†
 docker build -t pasvulnerablebootapp .
 docker run -p 8080:8080 pasvulnerablebootapp
 
+Build image with docker:
+
+$ docker build --tag=pasvulnerablebootapp:latest .
+$ docker tag pasvulnerablebootapp:latest pasapples/pasvulnerablebootapp:latest
+$ docker push pasapples/pasvulnerablebootapp:latest
+
+View image layers:
+
+$ dive pasapples/pasvulnerablebootapp:latest
+$ docker image inspect pasapples/pasvulnerablebootapp:latest --format="{{range .RootFS.Layers}}{{.}}{{println}}{{end}}"
